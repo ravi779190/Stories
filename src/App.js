@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './Global.scss';
+import Story from './components/Story';
+import storiesdata from './data/dummy.json'
 
 function App() {
+  const [counter, setCounter] = useState(0)
+  const callbackSetCounter = (side) => {
+    if (side == 'left') {
+      if(counter == 0){
+        setCounter(storiesdata.length - 1)
+        return;
+      }
+      setCounter(counter - 1)
+    } else {    
+      if(storiesdata.length == counter + 1){
+        setCounter(0)
+        return;
+      }
+      setCounter(counter + 1)
+    }
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={'mainDiv'}>
+        <div>
+          Header
+        </div>
+        {/* {storiesdata.map((story, i) => (
+          <Story story={story} key={i} />
+        ))
+        } */}
+        <Story story={storiesdata[counter]} key={counter} callback={callbackSetCounter}/>
+      </div>
     </div>
   );
 }

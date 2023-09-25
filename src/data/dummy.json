@@ -1,0 +1,117 @@
+[
+    {
+        "image": {
+            "type": "content",
+            "subType": "image",
+            "url": "./demo.jpeg",
+            "props": {
+                "height": 800,
+                "width": 400,
+                "rotation": "",
+                "top": "",
+                "left": "",
+                "animation": ""
+            }
+        },
+        "text": {
+            "type": "text",
+            "text": "<h3>Story 1</h3>",
+            "props": {
+                "height": 800,
+                "width": 400,
+                "rotation": "",
+                "top": "",
+                "left": "",
+                "size": "",
+                "font": ""
+            }
+        },
+        "cta": {
+            "type": "cta",
+            "text": "CTA-1",
+            "url": "",
+            "props": {
+                "height": "",
+                "width": "",
+                "bgColor": "blue"
+            }
+        }
+    },
+    {
+        "image": {
+            "type": "content",
+            "subType": "image",
+            "url": "./demo.jpeg",
+            "props": {
+                "height": 800,
+                "width": 400,
+                "rotation": "",
+                "top": "",
+                "left": "",
+                "animation": ""
+            }
+        },
+        "text": {
+            "type": "text",
+            "text": "<h3>Story 2</h3>",
+            "props": {
+                "height": 800,
+                "width": 400,
+                "rotation": "",
+                "top": "",
+                "left": "",
+                "size": "",
+                "font": ""
+            }
+        },
+        "cta": {
+            "type": "cta",
+            "text": "CTA-2",
+            "url": "",
+            "props": {
+                "height": "",
+                "width": "",
+                "color": ""
+            }
+        }
+    },
+    {
+        "image": {
+            "type": "content",
+            "subType": "image",
+            "url": "./demo.jpeg",
+            "props": {
+                "height": 800,
+                "width": 400,
+                "rotation": "",
+                "top": "",
+                "left": "",
+                "animation": ""
+            }
+        },
+        "text": {
+            "type": "text",
+            "text": "<h3>Story 3</h3>",
+            "props": {
+                "height": 800,
+                "width": 400,
+                "rotation": "",
+                "top": "",
+                "left": "",
+                "size": "",
+                "font": ""
+            }
+        },
+        "cta": {
+            "type": "cta",
+            "text": "CTA-3",
+            "url": "",
+            "props": {
+                "height": "",
+                "width": "",
+                "color": ""
+            }
+        }
+    }
+    
+]
