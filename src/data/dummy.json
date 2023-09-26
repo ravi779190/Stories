@@ -21,15 +21,16 @@
                     },
                     {
                         "type": "text",
-                        "text": "<h3>Story 1.1</h3>",
+                        "text": "Story 1.1",
                         "props": {
                             "height": 800,
                             "width": 400,
                             "rotation": "",
-                            "top": "",
-                            "left": "",
-                            "size": "",
-                            "font": ""
+                            "top": 500,
+                            "left": 250,
+                            "size": 30,
+                            "font": "sans-serif",
+                            "color" : "red"
                         }
                     },
                     {
@@ -39,7 +40,9 @@
                         "props": {
                             "height": "",
                             "width": "",
-                            "bgColor": "blue"
+                            "bgColor": "blue",
+                            "top": 490,
+                            "left": 200
                         }
                     }
                 ]
@@ -62,15 +65,16 @@
                     },
                     {
                         "type": "text",
-                        "text": "<h3>Story 1.2</h3>",
+                        "text": "Story 1.2",
                         "props": {
                             "height": 800,
                             "width": 400,
                             "rotation": "",
-                            "top": "",
-                            "left": "",
-                            "size": "",
-                            "font": ""
+                            "top": 50,
+                            "left": 50,
+                            "size": 40,
+                            "font": "monospace",
+                            "color" : "green"
                         }
                     }
                     
@@ -101,25 +105,28 @@
                     },
                     {
                         "type": "text",
-                        "text": "<h3>Story 2.1</h3>",
+                        "text": "Story 2.1",
                         "props": {
                             "height": 800,
                             "width": 400,
                             "rotation": "",
-                            "top": "",
-                            "left": "",
-                            "size": "",
-                            "font": ""
+                            "top": 50,
+                            "left": 50,
+                            "size": 25,
+                            "font": "cursive",
+                            "color" : "yellow"
                         }
                     },
                     {
                         "type": "cta",
-                        "text": "CTA-1",
+                        "text": "CTA-2.1",
                         "url": "",
                         "props": {
                             "height": "",
                             "width": "",
-                            "bgColor": "blue"
+                            "bgColor": "blue",
+                            "top": 100,
+                            "left": 100
                         }
                     }
                 ]
@@ -142,15 +149,16 @@
                     },
                     {
                         "type": "text",
-                        "text": "<h3>Story 2.2</h3>",
+                        "text": "Story 2.2",
                         "props": {
                             "height": 800,
                             "width": 400,
                             "rotation": "",
-                            "top": "",
-                            "left": "",
-                            "size": "",
-                            "font": ""
+                            "top": 50,
+                            "left": 50,
+                            "size": 35,
+                            "font": "system-ui",
+                            "color" : "blue"
                         }
                     },
                     {
@@ -160,7 +168,9 @@
                         "props": {
                             "height": "",
                             "width": "",
-                            "bgColor": "blue"
+                            "bgColor": "blue",
+                            "top": 100,
+                            "left": 100
                         }
                     }
                     

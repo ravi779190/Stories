@@ -40,6 +40,8 @@
 .mainDiv{
   width: 400px;
   margin: auto; 
+  max-width: 100%;
+  position: relative;
 }
 
 @keyframes fadeIn {

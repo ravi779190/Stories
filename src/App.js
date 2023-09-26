@@ -6,8 +6,8 @@ import bundleOfStories from './data/dummy.json'
 function App() {
   const [counter, setCounter] = useState(0)
   const [bundleCounter, setBundleCounter] = useState(0)
-  const callbackSetCounter = (side, length) => {
-    if (side === 'left') {
+  const callbackSetCounter = (action, length) => {
+    if (action === 'prev') {
       if(counter === 0){
         // setCounter(length - 1)
         // TODO : will return to previous bundle of stories
@@ -19,7 +19,7 @@ function App() {
         return;
       }
       setCounter(counter - 1)
-    } else {   
+    } else if(action === 'next') {   
       if(length === counter + 1){
         // check if next bundle is there
         if(bundleOfStories.length ===  bundleCounter + 1){
