@@ -5,12 +5,30 @@
 .story{
     // position: absolute;
 }
-.htmlContainer{
-    // position: absolute;
-    width: 400px;
-    color: red;
-    // top: 50vh;
-}
-.ctaContainer{
-    padding: 10px 10px;
+.storyContainer{
+    position: absolute;
+    .image{
+        position: absolute;
+        z-index: 1;
+    }
+    .htmlContainer{
+        position: absolute;
+        color: red;
+        z-index: 2;
+        width: 400px;
+        top: 70vh;
+    }
+    .ctaContainer{
+        position: absolute;
+        z-index: 3;
+        width: 400px;
+        top: 80vh;
+        .cta{
+            padding: 8px 24px;
+            color: white;
+            background-color: blue;
+            border: none;
+            border-radius: 6px;
+        }
+    }
 }
