@@ -1,94 +1,67 @@
+import { useState, useEffect } from 'react';
 import '../Global.scss';
+import Slide from './Slides';
 import style from '../style/Story.module.scss'
-import React, { useRef } from "react";
+export default function Story({ story, length, callback }) {
 
-export default function Story({ story, length, callback, }) {
-    const divRef = useRef(null);
-    const _handleClick = (e, callback, length) => {
-        // const divWidth = divRef.current.getBoundingClientRect().width;
-        // const halfDivWidth = divWidth / 2;
-        // const mouseXPos = e.nativeEvent.offsetX;
-        // if (mouseXPos <= halfDivWidth) {
-        //     callback('left', length);
-        // } else {
-        //     callback('right', length);
-        // }
-    };
+    const [count, setCount] = useState(0);
+    const storyAction = (action, length) => {
+        if (action === 'prev') {
+            if (count === 0) {
+                callback(action, length);
+                return;
+            }
+            setCount(count - 1);
+        } else if (action === 'next' || action === 'autoPlay') {
+            if (length === count + 1) {
+                let checkBundleNext = callback(action, length);
+                if (checkBundleNext === false) {
+                    return
+                }
+                setCount(0)
+                return;
+            }
+            setCount(count + 1);
+        }
+    }
 
-    const storyAction = (e, action, length) => {
-        // console.log("action : ", action)
-        callback(action, length);
+    const duration = 3000;
+    useEffect(() => {
+        const interval = setInterval(() => {
+            storyAction('autoPlay', length);
+        }, duration);
+        return () => clearInterval(interval);
+    }, [count])
+
+    const getMeProgressBar = () => {
+        for (let i = 0; i < length; i++) {
+            return
+        }
     }
-    // fade-in
-    console.log('story : ', story)
-    const myStyle = {
-        color: "white",
-        backgroundColor: "DodgerBlue",
-        padding: "10px",
-        fontFamily: "Arial"
-    }
+    const width = (100 / length + '%');
+    //     const progressAnimationStrike = `@keyframes progressAnimationStrike {
+    //         from { width: 0 }
+    //         to   { width: 100% }
+    //    }`
+    //     const myStyle = {
+    //         progress:{
+    //             background: "rgba(0, 0, 0, 0.25)",
+    //             boxShadow: "inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08)",
+    //             margin: "0px 5px"
+    //         },
+    //         animation: {
+    //             backgroundColor: "white",
+    //             width: "100%",
+    //             animation: `${progressAnimationStrike} 3s`,
+    //             borderRadius: "10px 0px 0px 10px"
+    //         },
+    //     }
+    // console.log("story : ", story)
+
     return (
-        <div className={style.story} onClick={(e) => _handleClick(e, callback, length)} ref={divRef}>
-            <div className={style.hidden_container}>
-                <div className={style.left} style={{}}
-                    onClick={(e) => storyAction(e, 'prev', length)}>
-                    &nbsp;
-                </div>
-                <div className={style.center} style={{}}
-                    onClick={(e) => storyAction(e, 'pause', length)}>
-                    &nbsp;
-                </div>
-                <div className={style.right} style={{}}
-                    onClick={(e) => storyAction(e, 'next', length)}>
-                    &nbsp;
-                </div>
-            </div>
-            {/* <div style="display: none;">
-            </div> 
-            <div style="display: none;">
-            </div>  */}
-            {story.layers.map((item, i) => (
-                <div className={style.storyContainer}>
-                    {item.type === "content" &&
-                        <img className={style.image} src={item.url} alt={'story-image'}
-                            height={item.props.height} width={item.props.width} />}
-                    {item.type === "text" &&
-                        // <text x="20" y="35" lassName={style.htmlContainer} class="small">{item.text}</text>
-                        <div className={style.textContainer}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill={item.props.color} onAnimationStart={'ease-in 1s'}>
-                                <style>
-                                    {/* .animation {
-                                        font: italic 40px serif;
-                                        fill: red;
-                                    } */}
-
-                                </style>
-                                {/* <rect width="10" height="10" fill="green">
-                                    <animate attributeName="rx" values="0;20;0"
-                                        dur="2s" repeatCount="10" />
-                                </rect> */}
-
-                                <text x={item.props.left} y={item.props.top}
-                                    style={{ fontFamily: item.props.font, fontSize: item.props.size }}
-                                    className={style.htmlContainer}>{item.text}
-                                    {/* <set attributeName='visibility' begin='0s' dur='3s' to='hidden' />
-                                    <set attributeName='visibility' begin='5s' dur='3s' to='hidden' /> */}
-                                    <set attributeName="fill" begin='3s' dur='3s' to="green" />
-                                </text>
-
-                            </svg>
-                        </div>
-                        /* // <div className={style.htmlContainer} dangerouslySetInnerHTML={{ __html: item.text }}></div> */
-                    }
-                    {item.type === "cta" &&
-                        <div className={style.ctaContainer}>
-                            <button className={style.cta} style={{ top: item.props.top, left: item.props.left }}>{item.text}</button>
-                        </div>
-                    }
-                </div>
-            ))}
+        <div>
+            <Slide slide={story[count]} count={count} length={length} callback={storyAction} />
         </div>
-
     );
 }
 
