@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react';
 import '../Global.scss';
 import Slide from './Slides';
 import style from '../style/Story.module.scss'
-export default function Story({ story, length, callback }) {
+import Loader from './Loader';
+export default function Story({ story, length, callback, thumbnail, title, createdAt }) {
 
     const [count, setCount] = useState(0);
+    const [clicked, setClicked] = useState(false);
+    const [uploadAgo, setUploadAgo] = useState('');
     const storyAction = (action, length) => {
         if (action === 'prev') {
             if (count === 0) {
@@ -15,6 +18,7 @@ export default function Story({ story, length, callback }) {
         } else if (action === 'next' || action === 'autoPlay') {
             if (length === count + 1) {
                 let checkBundleNext = callback(action, length);
+                setClicked(true)
                 if (checkBundleNext === false) {
                     return
                 }
@@ -25,41 +29,57 @@ export default function Story({ story, length, callback }) {
         }
     }
 
-    const duration = 3000;
-    useEffect(() => {
-        const interval = setInterval(() => {
-            storyAction('autoPlay', length);
-        }, duration);
-        return () => clearInterval(interval);
-    }, [count])
+    // const duration = 3000;
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         storyAction('autoPlay', length);
+    //     }, duration);
+    //     return () => clearInterval(interval);
+    // }, [count])
 
-    const getMeProgressBar = () => {
-        for (let i = 0; i < length; i++) {
-            return
+    useEffect(() => {
+        if (createdAt) {
+            const date = new Date();
+            const currenTime = date.getHours()
+                + ':' + date.getMinutes()
+                + ":" + date.getSeconds();
+    
+            function hmsToSeconds(s) {
+                var b = s.split(':');
+                return b[0] * 3600 + b[1] * 60 + (+b[2] || 0);
+            }
+            function secondsToHMS(secs) {
+                function z(n) { return (n < 10 ? '0' : '') + n; }
+                var sign = secs < 0 ? '-' : '';
+                secs = Math.abs(secs);
+                return sign + z(secs / 3600 | 0) + ':' + z((secs % 3600) / 60 | 0) + ':' + z(secs % 60);
+            }
+    
+            let timeDifference = secondsToHMS(hmsToSeconds(createdAt) - hmsToSeconds(currenTime)).split(':')
+            if (timeDifference[0] <= 0) {
+                setUploadAgo(timeDifference[1] + 'm')
+            } else if (timeDifference[1] <= 0) {
+                setUploadAgo(timeDifference[2] + 's')
+            } else {
+                setUploadAgo(timeDifference[0] + 'h')
+            }
         }
-    }
-    const width = (100 / length + '%');
-    //     const progressAnimationStrike = `@keyframes progressAnimationStrike {
-    //         from { width: 0 }
-    //         to   { width: 100% }
-    //    }`
-    //     const myStyle = {
-    //         progress:{
-    //             background: "rgba(0, 0, 0, 0.25)",
-    //             boxShadow: "inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08)",
-    //             margin: "0px 5px"
-    //         },
-    //         animation: {
-    //             backgroundColor: "white",
-    //             width: "100%",
-    //             animation: `${progressAnimationStrike} 3s`,
-    //             borderRadius: "10px 0px 0px 10px"
-    //         },
-    //     }
-    // console.log("story : ", story)
+    },[createdAt])
+    
 
     return (
         <div>
+            <div className={'loader_container'}>
+                {/* {getLoader} */}
+                <Loader length={length} isLoading={count} isclick={clicked} />
+            </div>
+            <div className={style.bundle_container}>
+                <img src={thumbnail}
+                    alt="user-image" height={50} width={50}
+                    className={style.bundle_image} />
+                <div className={style.title}>{title}</div>
+                <div className={style.time}>{uploadAgo}</div>
+            </div>
             <Slide slide={story[count]} count={count} length={length} callback={storyAction} />
         </div>
     );

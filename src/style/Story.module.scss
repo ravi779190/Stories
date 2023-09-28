@@ -1,0 +1,23 @@
+.bundle_container {
+    position: absolute;
+    z-index: 5;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .bundle_image {
+        border-radius: 100px;
+    }
+    .title {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .time{
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

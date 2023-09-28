@@ -1,15 +1,16 @@
 [
     {
-        "title" : "",
-        "thumbnail" : "",
+        "title" : "Bundle 1",
+        "thumbnail" : "./amog.jpg",
         "badges" : [],
+        "createdAt" : "17:43:40",
         "stories" : [
             { 
                 "layers" : [
                     {
                         "type": "content",
                         "subType": "image",
-                        "url": "./demo.jpeg",
+                        "url": "./dummy.jpeg",
                         "props": {
                             "height": 800,
                             "width": 400,
@@ -21,28 +22,33 @@
                     },
                     {
                         "type": "text",
-                        "text": "Story 1.1",
+                        "text": "Men's Henleys, Polos & T-Shirts: Crewneck, V-Neck, & Tees | Carbon2Cobalt",
                         "props": {
-                            "height": 800,
-                            "width": 400,
-                            "rotation": "",
-                            "top": 500,
-                            "left": 250,
+                            "rotate": "-20deg",
+                            "top": 400,
+                            "left": 0,
                             "size": 30,
-                            "font": "sans-serif",
-                            "color" : "red"
+                            "fontFamily": "sans-serif",
+                            "color" : "white",
+                            "fontSize" : "20px",
+                            "fontWeight" : 600
                         }
                     },
                     {
                         "type": "cta",
-                        "text": "CTA-1",
-                        "url": "",
+                        "text": "Buy Now",
+                        "url": "https://www.google.com?utm_medium=dummyBrand&utm_source=stories",
                         "props": {
-                            "height": "",
-                            "width": "",
-                            "bgColor": "blue",
-                            "top": 490,
-                            "left": 200
+                            "height": 40,
+                            "width": 120,
+                            "backgroundColor": "yellow",
+                            "top": 600,
+                            "left": 165,
+                            "color": "black",
+                            "borderRadius": "6px",
+                            "fontWeight" : 700,
+                            "fontSize" : "16px",
+                            "rotate" : "-20deg"
                         }
                     }
                 ]
@@ -53,7 +59,7 @@
                     {
                         "type": "content",
                         "subType": "image",
-                        "url": "./demo.jpeg",
+                        "url": "./storyImage1.jpeg",
                         "props": {
                             "height": 800,
                             "width": 400,
@@ -84,16 +90,17 @@
         ]
     },
     {
-        "title" : "",
-        "thumbnail" : "",
+        "title" : "Bundle 2",
+        "thumbnail" : "./parth.jpg",
         "badges" : [],
+        "createdAt" : "16:43:40",
         "stories" : [
             { 
                 "layers" : [
                     {
                         "type": "content",
                         "subType": "image",
-                        "url": "./demo.jpeg",
+                        "url": "./storyImage2.jpeg",
                         "props": {
                             "height": 800,
                             "width": 400,
@@ -137,7 +144,7 @@
                     {
                         "type": "content",
                         "subType": "image",
-                        "url": "./demo.jpeg",
+                        "url": "./storyImage3.jpeg",
                         "props": {
                             "height": 800,
                             "width": 400,

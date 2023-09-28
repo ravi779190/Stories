@@ -9,12 +9,15 @@ export default function App({bundle}) {
   const callbackSetCounter = (action, length) => {
     // console.log('i am here ')
     if (action === 'prev') {
+      debugger
       if(counter === 0){
         if(bundleCounter ===  0){ 
           return
         }
         setBundleCounter(bundleCounter - 1)
-        setCounter(length - 1)
+        setCounter(length-1)
+        console.log('bundleCounter : ', bundleCounter)
+        console.log('counter : ', counter)
         return;
       }
       setCounter(counter - 1)
@@ -29,11 +32,9 @@ export default function App({bundle}) {
   }
   return (
       <div className={'mainDiv'}>
-        <div>
-          Header
-        </div>
         {/* {bundle.map((item, key) => ( */}
-          <Story story={bundle[bundleCounter].stories} 
+          <Story story={bundle[bundleCounter].stories} thumbnail={bundle[bundleCounter].thumbnail} 
+          createdAt={bundle[bundleCounter].createdAt} title={bundle[bundleCounter].title} 
           length={bundle[bundleCounter].stories.length} callback={callbackSetCounter}/>
         {/* ))
         } */}
